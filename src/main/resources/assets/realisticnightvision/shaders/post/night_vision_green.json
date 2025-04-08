@@ -1,0 +1,23 @@
+{
+    "targets": [
+        "swap"
+    ],
+    "passes": [
+        {
+            "name": "realisticnightvision:night_vision_green",
+            "intarget": "minecraft:main",
+            "outtarget": "swap",
+            "uniforms": [
+
+            ]
+        },
+        {
+            "name": "realisticnightvision:night_vision_overlay",
+            "intarget": "swap",
+            "outtarget": "minecraft:main",
+            "uniforms": [
+                
+            ]
+        }
+    ]
+}

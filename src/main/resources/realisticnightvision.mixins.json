@@ -1,0 +1,13 @@
+{
+    "required": true,
+    "package": "com.kyraryk.realisticnightvision.mixin",
+    "compatibilityLevel": "JAVA_17",
+    "refmap": "realisticnightvision.refmap.json",
+    "mixins": [
+
+    ],
+    "client": [
+        "GameRendererMixin"
+    ],
+    "minVersion": "0.8"
+}

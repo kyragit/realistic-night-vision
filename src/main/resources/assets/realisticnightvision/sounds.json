@@ -1,0 +1,6 @@
+{
+    "switch_mode": {
+        "subtitle": "realisticnightvision.subtitle.switch_mode",
+        "sounds": ["realisticnightvision:switch_mode"]
+    }
+}
