@@ -5,7 +5,7 @@
         "dstrgb": "zero"
     },
     "vertex": "realisticnightvision:night_vision_vert",
-    "fragment": "realisticnightvision:night_vision_white",
+    "fragment": "realisticnightvision:night_vision",
     "attributes": ["Position"],
     "samplers": [
         {
@@ -19,6 +19,12 @@
         { "name": "ProjMat",     "type": "matrix4x4", "count": 16, "values": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },
         { "name": "InSize",      "type": "float",     "count": 2,  "values": [ 1.0, 1.0 ] },
         { "name": "OutSize",     "type": "float",     "count": 2,  "values": [ 1.0, 1.0 ] },
-        {"name": "Time", "type": "float", "count": 1, "values": [0.0]}
+        {"name": "Time", "type": "float", "count": 1, "values": [0.0]},
+        {"name": "colorSensitivity", "type": "float", "count": 3, "values": [1.0, 1.0, 1.0]},
+        {"name": "noiseStrength", "type": "float", "count": 1, "values": [1.0]},
+        {"name": "amplification", "type": "float", "count": 1, "values": [1.0]},
+        {"name": "phosphorColor", "type": "float", "count": 3, "values": [1.0, 1.0, 1.0]},
+        {"name": "anomalyChance", "type": "float", "count": 1, "values": [1.0]},
+        {"name": "anomalyStrength", "type": "float", "count": 1, "values": [1.0]}
     ]
 }

@@ -31,7 +31,7 @@
             ]
         },
         {
-            "name": "realisticnightvision:night_vision_white",
+            "name": "realisticnightvision:night_vision",
             "intarget": "minecraft:main",
             "outtarget": "swap",
             "auxtargets": [
@@ -41,7 +41,12 @@
                 }
             ],
             "uniforms": [
-
+                {"name": "colorSensitivity", "values": [0.15, 1.0, 0.4]},
+                {"name": "noiseStrength", "values": [0.035]},
+                {"name": "amplification", "values": [51.0]},
+                {"name": "phosphorColor", "values": [0.53725, 0.839215, 0.807843]},
+                {"name": "anomalyChance", "values": [0.000025]},
+                {"name": "anomalyStrength", "values": [0.45]}
             ]
         },
         {

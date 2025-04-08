@@ -3,6 +3,12 @@
 uniform sampler2D DiffuseSampler;
 uniform sampler2D BrightnessSampler;
 uniform float Time;
+uniform vec3 colorSensitivity;
+uniform float noiseStrength;
+uniform float amplification;
+uniform vec3 phosphorColor;
+uniform float anomalyChance;
+uniform float anomalyStrength;
 
 in vec2 texCoord;
 out vec4 fragColor;
@@ -13,15 +19,11 @@ float rand(vec2 co){
 
 void main() {
     vec4 pixel = texture(DiffuseSampler, texCoord);
-    float redSens = 0.15;
-    float greenSens = 1.0;
-    float blueSens = 0.4;
-    float sourceBrightness = (pixel.r * redSens + pixel.g * greenSens + pixel.b * blueSens) / (redSens + greenSens + blueSens);
-    float noiseStrength = 0.035;
+    float sourceBrightness = dot(pixel.rgb, colorSensitivity) / (colorSensitivity.r + colorSensitivity.g + colorSensitivity.b);
     float noise = ((rand(texCoord + Time) * 2.0) - 1.0) * noiseStrength;
-    float amplification = 51.0;
+    float newRand = rand(vec2(noise, pixel.g));
+    float anom = ceil(anomalyChance - newRand);
     float finalVal = log(max(sourceBrightness + noise, 0.0) * amplification + 1.0) / log(amplification + 1.0);
     finalVal = mix(finalVal, max(texture(BrightnessSampler, texCoord).r, finalVal), 0.75);
-    vec3 phosphorColor = vec3(0.53725, 0.839215, 0.807843);
-    fragColor = vec4(phosphorColor * finalVal, 1.0);
+    fragColor = mix(vec4(phosphorColor * finalVal, 1.0), vec4(1.0), anom * anomalyStrength);
 }
