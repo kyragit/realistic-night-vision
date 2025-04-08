@@ -1,12 +1,45 @@
 {
     "targets": [
-        "swap"
+        "swap",
+        "brightness",
+        "brightnessCopy"
     ],
     "passes": [
+        {
+            "name": "realisticnightvision:blit",
+            "intarget": "brightness",
+            "outtarget": "brightnessCopy",
+            "uniforms": [
+
+            ]
+        },
+        {
+            "name": "realisticnightvision:night_vision_brightness",
+            "intarget": "minecraft:main",
+            "outtarget": "brightness",
+            "auxtargets": [
+                {
+                    "name": "BrightnessCopySampler",
+                    "id": "brightnessCopy"
+                }
+            ],
+            "uniforms": [
+                {
+                    "name": "speed",
+                    "values": [0.175]
+                }
+            ]
+        },
         {
             "name": "realisticnightvision:night_vision_green",
             "intarget": "minecraft:main",
             "outtarget": "swap",
+            "auxtargets": [
+                {
+                    "name": "BrightnessSampler",
+                    "id": "brightness"
+                }
+            ],
             "uniforms": [
 
             ]

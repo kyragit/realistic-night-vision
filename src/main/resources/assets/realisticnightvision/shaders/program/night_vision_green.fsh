@@ -1,6 +1,7 @@
 #version 150
 
 uniform sampler2D DiffuseSampler;
+uniform sampler2D BrightnessSampler;
 uniform float Time;
 
 in vec2 texCoord;
@@ -20,6 +21,7 @@ void main() {
     float noise = ((rand(texCoord + Time) * 2.0) - 1.0) * noiseStrength;
     float amplification = 39.0;
     float finalVal = log(max(sourceBrightness + noise, 0.0) * amplification + 1.0) / log(amplification + 1.0);
+    finalVal = mix(finalVal, max(texture(BrightnessSampler, texCoord).r, finalVal), 0.75);
     vec3 phosphorColor = vec3(0.639215, 1.0, 0.0);
     fragColor = vec4(phosphorColor * finalVal, 1.0);
 }
